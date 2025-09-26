@@ -26,6 +26,15 @@ public class TurmaService {
         if (dto.getProfessorId() == null) {
             throw new IllegalArgumentException("É necessário informar o professor da turma");
         }
+        if (dto.getNome() == null || dto.getNome().isBlank()) {
+            throw new IllegalArgumentException("Nome da turma é obrigatório");
+        }
+        if (dto.getPeriodo() == null || dto.getPeriodo().isBlank()) {
+            throw new IllegalArgumentException("Período da turma é obrigatório");
+        }
+        if (dto.getAno() == null || dto.getAno() <= 0) {
+            throw new IllegalArgumentException("Ano da turma é obrigatório e deve ser maior que zero");
+        }
 
         Professor professor = professorRepository.findById(dto.getProfessorId())
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -33,6 +42,10 @@ public class TurmaService {
 
         Turma turma = new Turma();
         turma.setProfessor(professor);
+        turma.setNome(dto.getNome());
+        turma.setPeriodo(dto.getPeriodo());
+        turma.setAno(dto.getAno());
+
         Turma saved = turmaRepository.save(turma);
         return new TurmaDTO(saved);
     }

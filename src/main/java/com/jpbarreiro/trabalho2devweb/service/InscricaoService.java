@@ -10,6 +10,7 @@ import com.jpbarreiro.trabalho2devweb.repository.InscricaoRepository;
 import com.jpbarreiro.trabalho2devweb.repository.TurmaRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,6 +46,7 @@ public class InscricaoService {
         Inscricao inscricao = new Inscricao();
         inscricao.setAluno(aluno);
         inscricao.setTurma(turma);
+        inscricao.setDataHora(LocalDateTime.now());
 
         Inscricao saved = inscricaoRepository.save(inscricao);
         return new InscricaoDTO(saved);

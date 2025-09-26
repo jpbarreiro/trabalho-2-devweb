@@ -14,6 +14,12 @@ public class Turma {
     @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false)
+    private Integer ano;
+
+    @Column(nullable = false)
+    private Integer periodo;
+
     @ManyToOne
     @JoinColumn(name = "professor_id", nullable = false)
     private Professor professor;
