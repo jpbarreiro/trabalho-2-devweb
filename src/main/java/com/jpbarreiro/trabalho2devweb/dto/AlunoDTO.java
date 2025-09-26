@@ -32,7 +32,7 @@ public class AlunoDTO {
         if (aluno.getInscricoes() != null) {
             this.inscricoes = aluno.getInscricoes()
                     .stream()
-                    .map(i -> new InscricaoDTO(i.getId(), i.getAluno().getId(), i.getTurma().getId()))
+                    .map(i -> new InscricaoDTO(i.getId(), i.getAluno().getId(), i.getTurma().getId(), i.getDataHora()))
                     .collect(Collectors.toList());
         }
     }
