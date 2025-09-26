@@ -29,7 +29,7 @@ public class TurmaService {
         if (dto.getNome() == null || dto.getNome().isBlank()) {
             throw new IllegalArgumentException("Nome da turma é obrigatório");
         }
-        if (dto.getPeriodo() == null || dto.getPeriodo().isBlank()) {
+        if (dto.getPeriodo() == null || dto.getPeriodo() == 0) {
             throw new IllegalArgumentException("Período da turma é obrigatório");
         }
         if (dto.getAno() == null || dto.getAno() <= 0) {
